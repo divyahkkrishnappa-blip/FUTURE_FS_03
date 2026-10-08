@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScreenDoc — Doorstep Mobile Screen Repair</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="logo">📱 Screen<span>Doc</span></a>
+    <nav>
+      <a href="#estimate">Price</a>
+      <a href="#track">Track</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#pitch">Pitch</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <span class="badge" id="openBadge">Checking availability…</span>
+    <h1>Cracked screen?<br><span>We come to you.</span></h1>
+    <p>Certified technician at your doorstep in 60 minutes. Fixed while you watch. 6-month warranty on every screen.</p>
+    <div class="cta">
+      <a href="#estimate" class="btn">Get instant price</a>
+      <a href="#track" class="btn ghost">Track my repair</a>
+    </div>
+    <div class="stats">
+      <div><b data-count="4200">0</b><span>Screens fixed</span></div>
+      <div><b data-count="45">0</b><span>Minutes avg.</span></div>
+      <div><b data-count="6">0</b><span>Month warranty</span></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="card"><i>1</i><h3>Pick your phone</h3><p>Get the exact price instantly. No hidden charges.</p></div>
+      <div class="card"><i>2</i><h3>Choose a slot</h3><p>Book a time that suits you. Home, office or café.</p></div>
+      <div class="card"><i>3</i><h3>Fixed on the spot</h3><p>Pay only after you check your new screen.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="estimate">
+    <h2>Instant price &amp; booking</h2>
+    <p class="sub">Select your phone and screen type. Then book your visit.</p>
+    <div class="panel">
+      <div class="grid2">
+        <label>Brand <select id="brand"></select></label>
+        <label>Model <select id="model"></select></label>
+      </div>
+      <fieldset>
+        <legend>Screen quality</legend>
+        <label class="pill"><input type="radio" name="q" value="0" checked> Standard</label>
+        <label class="pill"><input type="radio" name="q" value="1"> Premium (original-like)</label>
+      </fieldset>
+      <div class="price">
+        <span>Estimated price</span>
+        <b id="price">₹0</b>
+        <small id="priceNote">Select a model</small>
+      </div>
+
+      <form id="bookForm" novalidate>
+        <div class="grid2">
+          <label>Your name <input type="text" id="name" placeholder="Full name" required></label>
+          <label>Phone number <input type="tel" id="phone" placeholder="10-digit mobile" required></label>
+        </div>
+        <label>Address <input type="text" id="address" placeholder="House no., street, area" required></label>
+        <div class="grid2">
+          <label>Date <input type="date" id="date" required></label>
+          <label>Time slot
+            <select id="slot">
+              <option>10:00 – 12:00</option>
+              <option>12:00 – 14:00</option>
+              <option>14:00 – 16:00</option>
+              <option>16:00 – 18:00</option>
+              <option>18:00 – 20:00</option>
+            </select>
+          </label>
+        </div>
+        <p class="error" id="formError" role="alert"></p>
+        <button type="submit" class="btn full">Book doorstep repair</button>
+      </form>
+
+      <div class="success" id="success" hidden>
+        <h3>✅ Booking ready!</h3>
+        <p>Your order ID: <b id="orderId"></b></p>
+        <p>Tap below to confirm on WhatsApp. Save the ID to track your repair.</p>
+        <a class="btn full" id="waLink" target="_blank" rel="noopener">Confirm on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="track">
+    <h2>Track your repair</h2>
+    <p class="sub">Enter your order ID. Demo: try <b>SD1001</b>, <b>SD1002</b> or <b>SD1003</b>.</p>
+    <div class="panel">
+      <div class="row">
+        <input type="text" id="trackInput" placeholder="e.g. SD1001">
+        <button class="btn" id="trackBtn" type="button">Track</button>
+      </div>
+      <ol class="timeline" id="timeline" hidden></ol>
+      <p class="error" id="trackError"></p>
+    </div>
+  </section>
+
+  <section class="wrap" id="reviews">
+    <h2>Customer reviews</h2>
+    <p class="sub" id="avgText">Loading…</p>
+    <div class="reviews" id="reviewList"></div>
+
+    <form class="panel" id="reviewForm" novalidate>
+      <h3>Write a review</h3>
+      <label>Your name <input type="text" id="rName" placeholder="Full name"></label>
+      <div class="stars" id="stars" role="radiogroup" aria-label="Rating">
+        <button type="button" data-v="1">★</button>
+        <button type="button" data-v="2">★</button>
+        <button type="button" data-v="3">★</button>
+        <button type="button" data-v="4">★</button>
+        <button type="button" data-v="5">★</button>
+      </div>
+      <label>Your review <textarea id="rText" rows="3" placeholder="How was the repair?"></textarea></label>
+      <p class="error" id="rError" role="alert"></p>
+      <button type="submit" class="btn">Submit review</button>
+    </form>
+  </section>
+
+  <section class="wrap" id="faq">
+    <h2>Questions</h2>
+    <div class="faq">
+      <details><summary>How long does a repair take?</summary><p>Most screens are replaced in 30–45 minutes at your location.</p></details>
+      <details><summary>Is my data safe?</summary><p>Yes. The repair doesn't touch your data and you can watch the whole process.</p></details>
+      <details><summary>What if you can't fix it?</summary><p>You pay only a small visit fee, which is waived if you go ahead with the repair.</p></details>
+      <details><summary>Do you give a warranty?</summary><p>Yes. 6 months on screen defects such as touch issues or lines.</p></details>
+    </div>
+  </section>
+
+  <section class="wrap" id="pitch">
+    <div class="pitch">
+      <h2>Pitch to the owner</h2>
+      <p class="sub">How this website helps ScreenDoc grow</p>
+      <div class="p"><b>1. Be found.</b> People search "mobile screen repair near me" in a panic. A fast mobile site gets you the call.</div>
+      <div class="p"><b>2. Instant trust.</b> Upfront prices, reviews and a warranty remove the fear of being overcharged.</div>
+      <div class="p"><b>3. Less phone time.</b> The form collects model, address and slot, then sends it to WhatsApp.</div>
+      <div class="p"><b>4. Repeat business.</b> Order tracking and reviews bring customers back and spread word of mouth.</div>
+      <div class="p"><b>5. Next steps.</b> Google Business profile, local ads, a referral discount and monthly analytics.</div>
+    </div>
+  </section>
+</main>
+
+<footer><p>ScreenDoc · Demo website built as a live pitch project</p></footer>
+
+<script src="script.js"></script>
+</body>
+</html>
